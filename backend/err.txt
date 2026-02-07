@@ -1,0 +1,17 @@
+C:\Users\Hydra\OneDrive\Desktop\Project-reach\backend\node_modules\bullmq\dist\cjs\classes\redis-connection.js:72
+                throw new Error(msg);
+                ^
+
+Error: BullMQ: Your redis options maxRetriesPerRequest must be null.
+    at RedisConnection.checkBlockingOptions (C:\Users\Hydra\OneDrive\Desktop\Project-reach\backend\node_modules\bullmq\dist\cjs\classes\redis-connection.js:72:23)
+    at new RedisConnection (C:\Users\Hydra\OneDrive\Desktop\Project-reach\backend\node_modules\bullmq\dist\cjs\classes\redis-connection.js:52:18)
+    at new Worker (C:\Users\Hydra\OneDrive\Desktop\Project-reach\backend\node_modules\bullmq\dist\cjs\classes\worker.js:120:35)
+    at Object.<anonymous> (C:\Users\Hydra\OneDrive\Desktop\Project-reach\backend\dist\workers\email.worker.js:35:23)
+    at Module._compile (node:internal/modules/cjs/loader:1734:14)
+    at Object..js (node:internal/modules/cjs/loader:1899:10)
+    at Module.load (node:internal/modules/cjs/loader:1469:32)
+    at Function._load (node:internal/modules/cjs/loader:1286:12)
+    at TracingChannel.traceSync (node:diagnostics_channel:322:14)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:235:24)
+
+Node.js v23.10.0
