@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
-import { FiMail, FiSend, FiLogOut, FiMenu, FiX, FiPlus } from 'react-icons/fi';
+import { FiMail, FiSend, FiLogOut, FiMenu, FiX } from 'react-icons/fi';
 import { motion, AnimatePresence } from 'framer-motion';
 
 interface LayoutProps {
