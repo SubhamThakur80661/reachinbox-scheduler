@@ -2,6 +2,8 @@ import { useEffect, useState } from 'react';
 import axios from 'axios';
 import { format } from 'date-fns';
 
+const API_URL = import.meta.env.VITE_API_URL ?? 'http://localhost:3000';
+
 interface EmailJob {
     id: string;
     recipient: string;
@@ -17,7 +19,7 @@ const SentEmails = () => {
     useEffect(() => {
         const fetchJobs = async () => {
             try {
-                const res = await axios.get('http://localhost:3000/api/sent-emails');
+                const res = await axios.get(`${API_URL}/api/sent-emails`);
                 setJobs(res.data);
             } catch (error) {
                 console.error('Failed to fetch jobs', error);
