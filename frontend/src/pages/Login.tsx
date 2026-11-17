@@ -1,11 +1,13 @@
 import { FcGoogle } from 'react-icons/fc';
 import axios from 'axios';
 
+const API_URL = import.meta.env.VITE_API_URL ?? 'http://localhost:3000';
+
 const Login = () => {
     const handleLogin = async () => {
         try {
             // Fetch the Google Auth URL from the backend
-            const res = await axios.get('http://localhost:3000/api/auth/login');
+            const res = await axios.get(`${API_URL}/api/auth/login`);
             // Redirect the browser to Google's OAuth page
             window.location.href = res.data.url;
         } catch (error) {
@@ -32,7 +34,7 @@ const Login = () => {
                     </button>
 
                     <button
-                        onClick={() => window.location.href = 'http://localhost:3000/api/auth/mock-login'}
+                        onClick={() => window.location.href = `${API_URL}/api/auth/mock-login`}
                         className="w-full flex items-center justify-center px-4 py-3 border border-gray-600 text-base font-medium rounded-md text-gray-300 bg-[#374151] hover:bg-[#4B5563] transition-colors duration-200 shadow-sm"
                     >
                         Guest Login (Dev)
