@@ -5,6 +5,7 @@ import { google } from 'googleapis';
 import jwt from 'jsonwebtoken';
 
 const JWT_SECRET = process.env.JWT_SECRET || 'secret';
+const FRONTEND_URL = process.env.FRONTEND_URL || 'http://localhost:5173';
 
 export const login = (req: Request, res: Response) => {
     const url = getGoogleAuthURL();
@@ -57,7 +58,7 @@ export const googleCallback = async (req: Request, res: Response) => {
         });
 
         // Redirect to frontend with token
-        res.redirect(`http://localhost:5173/auth/success?token=${token}&user=${encodeURIComponent(JSON.stringify({ id: user.id, name: user.name, email: user.email }))}`);
+        res.redirect(`${FRONTEND_URL}/auth/success?token=${token}&user=${encodeURIComponent(JSON.stringify({ id: user.id, name: user.name, email: user.email }))}`);
 
     } catch (error) {
         console.error(error);
@@ -86,7 +87,7 @@ export const mockLogin = async (req: Request, res: Response) => {
             expiresIn: '7d',
         });
 
-        res.redirect(`http://localhost:5173/auth/success?token=${token}&user=${encodeURIComponent(JSON.stringify({ id: user.id, name: user.name, email: user.email }))}`);
+        res.redirect(`${FRONTEND_URL}/auth/success?token=${token}&user=${encodeURIComponent(JSON.stringify({ id: user.id, name: user.name, email: user.email }))}`);
     } catch (error) {
         console.error('Mock login failed', error);
         res.status(500).json({ error: 'Mock login failed' });
