@@ -3,6 +3,8 @@ import axios from 'axios';
 import { FiX, FiUpload, FiClock, FiSend } from 'react-icons/fi';
 import { motion, AnimatePresence } from 'framer-motion';
 
+const API_URL = import.meta.env.VITE_API_URL ?? 'http://localhost:3000';
+
 interface ComposeModalProps {
     onClose: () => void;
 }
@@ -51,7 +53,7 @@ const ComposeModal = ({ onClose }: ComposeModalProps) => {
 
         try {
             for (const rec of recipientsToProcess) {
-                await axios.post('http://localhost:3000/api/schedule', {
+                await axios.post(`${API_URL}/api/schedule`, {
                     recipient: rec,
                     subject,
                     body,
