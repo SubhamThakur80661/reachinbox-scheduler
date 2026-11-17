@@ -2,6 +2,8 @@ import { useEffect, useState } from 'react';
 import axios from 'axios';
 import { format } from 'date-fns';
 
+const API_URL = import.meta.env.VITE_API_URL ?? 'http://localhost:3000';
+
 interface EmailJob {
     id: string;
     recipient: string;
@@ -16,8 +18,7 @@ const ScheduledEmails = () => {
 
     const fetchJobs = async () => {
         try {
-            // Replace with env var in real app
-            const res = await axios.get('http://localhost:3000/api/scheduled-emails');
+            const res = await axios.get(`${API_URL}/api/scheduled-emails`);
             setJobs(res.data);
         } catch (error) {
             console.error('Failed to fetch jobs', error);
@@ -36,7 +37,7 @@ const ScheduledEmails = () => {
         if (!confirm('Are you sure you want to delete this scheduled email?')) return;
 
         try {
-            await axios.delete(`http://localhost:3000/api/schedule/${id}`);
+            await axios.delete(`${API_URL}/api/schedule/${id}`);
             setJobs(jobs.filter(job => job.id !== id));
         } catch (error) {
             console.error('Failed to delete job', error);
